@@ -1,0 +1,432 @@
+/* Reset, layout primitives, typography, buttons and reveal motion.
+   Breakpoints used across the project: 40rem (640px), 48rem (768px), 64rem (1024px), 80rem (1280px). */
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  font-family: var(--font-sans);
+  tab-size: 4;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ui-bg-page);
+  color: var(--color-brand-dark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+::selection {
+  background-color: color-mix(in oklab, var(--color-brand-primary) 10%, transparent);
+  color: var(--color-brand-primary);
+}
+h1,
+h2,
+h3,
+h4 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+ol,
+ul {
+  list-style: none;
+}
+img,
+video,
+svg {
+  display: block;
+  vertical-align: middle;
+}
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+button,
+input {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  letter-spacing: inherit;
+}
+button {
+  cursor: pointer;
+}
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+:focus-visible {
+  outline: 2px solid var(--color-brand-accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--spacing-container-px);
+}
+@media (min-width: 40rem) {
+  .container {
+    max-width: 40rem;
+  }
+}
+@media (min-width: 48rem) {
+  .container {
+    max-width: 48rem;
+  }
+}
+@media (min-width: 64rem) {
+  .container {
+    max-width: 64rem;
+  }
+}
+@media (min-width: 80rem) {
+  .container {
+    max-width: 80rem;
+  }
+}
+@media (min-width: 96rem) {
+  .container {
+    max-width: 96rem;
+  }
+}
+/* Full-width container used by most Nova sections */
+.container-wide {
+  width: 100%;
+  padding-inline: var(--section-px);
+}
+.section {
+  padding-block: var(--spacing-section-py);
+  background-color: var(--ui-bg-page);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ---------- Typography ---------- */
+.type-accent-label {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-brand-accent);
+}
+.type-hero {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: var(--ui-type-heading-tracking);
+  line-height: 1.08;
+}
+.type-section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 1.35rem + 2.8vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.type-section-lg {
+  font-family: var(--font-heading);
+  font-size: clamp(1.65rem, 1.3rem + 2.2vw, 2.75rem);
+  font-weight: 700;
+}
+.type-feature-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 0.95rem + 1.45vw, 1.5rem);
+  font-weight: 700;
+}
+.type-lead {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 0.85rem + 0.8vw, 1.125rem);
+  font-weight: 400;
+  color: var(--ui-text-on-light-subtle);
+  letter-spacing: var(--ui-type-lead-tracking);
+  line-height: var(--ui-type-lead-leading);
+}
+.type-body {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 0.9rem + 0.45vw, 1.125rem);
+  font-weight: 400;
+  line-height: var(--ui-type-body-leading);
+}
+.type-small {
+  font-family: var(--font-sans);
+  font-size: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+  line-height: 1.625;
+}
+.text-accent {
+  color: var(--color-brand-accent);
+}
+
+/* Centered section header used by FAQ, Experience and Reviews */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 48rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+.section-head .type-lead {
+  max-width: 42rem;
+}
+@media (min-width: 48rem) {
+  .section-head {
+    margin-bottom: 4rem;
+  }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: var(--ui-radius-full);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: normal;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn > * {
+  position: relative;
+  z-index: 10;
+}
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-brand-primary) 50%, transparent);
+}
+/* Rolling label: the default text slides up and the hover copy slides in */
+.btn__wrap {
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+.btn__text,
+.btn__hover {
+  grid-area: 1 / 1;
+  will-change: transform;
+  transition:
+    transform 0.6s var(--ease-out-expo),
+    opacity 0.6s var(--ease-out-expo);
+}
+.btn__hover {
+  opacity: 0;
+  transform: translateY(105%);
+}
+.btn:hover .btn__text {
+  opacity: 0;
+  transform: translateY(-105%);
+}
+.btn:hover .btn__hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sizes */
+.btn--lg {
+  width: 100%;
+  min-height: 2.75rem;
+  height: 2.75rem;
+  padding-inline: 1.25rem;
+  font-size: 0.875rem;
+}
+.btn--md {
+  width: 100%;
+  min-height: 2.75rem;
+  height: 2.5rem;
+  padding-inline: 1rem;
+  font-size: 0.875rem;
+}
+@media (min-width: 40rem) {
+  .btn--lg {
+    width: auto;
+    height: 3rem;
+    padding-inline: 2rem;
+    font-size: 1.125rem;
+  }
+  .btn--md {
+    width: auto;
+    height: 2.75rem;
+    padding-inline: 1.25rem;
+    font-size: 1rem;
+  }
+}
+@media (min-width: 48rem) {
+  .btn--lg {
+    font-size: clamp(1rem, 1.15vw, 1.2rem);
+  }
+}
+
+/* Variants */
+.btn--primary {
+  background-color: var(--color-brand-primary);
+  color: var(--color-white);
+  box-shadow:
+    0 20px 25px -5px color-mix(in oklab, var(--color-brand-primary) 20%, transparent),
+    0 8px 10px -6px color-mix(in oklab, var(--color-brand-primary) 20%, transparent);
+}
+.btn--accent {
+  background-color: var(--color-brand-accent);
+  color: var(--color-brand-dark);
+  box-shadow:
+    0 20px 25px -5px color-mix(in oklab, var(--color-brand-accent) 20%, transparent),
+    0 8px 10px -6px color-mix(in oklab, var(--color-brand-accent) 20%, transparent);
+}
+.btn--outline {
+  border: 2px solid color-mix(in oklab, var(--color-brand-dark) 20%, transparent);
+  color: var(--color-brand-dark);
+}
+@media (hover: hover) {
+  .btn--outline:hover {
+    border-color: var(--color-brand-dark);
+    background-color: color-mix(in oklab, var(--color-brand-dark) 5%, transparent);
+  }
+}
+.btn--outline-light {
+  border: 2px solid color-mix(in oklab, var(--color-brand-light) 65%, transparent);
+  background-color: color-mix(in oklab, var(--color-brand-dark) 35%, transparent);
+  color: var(--color-brand-light);
+}
+
+/* Text link with sliding arrow ("See all on GitHub →") */
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-brand-dark);
+  transition: color 0.3s ease;
+}
+.arrow-link:hover,
+.arrow-link:focus-visible {
+  color: var(--color-brand-accent);
+}
+.arrow-link__text,
+.arrow-link__arrow {
+  transition: transform 0.3s ease-out;
+}
+.arrow-link__arrow {
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.arrow-link:hover .arrow-link__text {
+  transform: translateX(-0.25rem);
+}
+.arrow-link:hover .arrow-link__arrow {
+  transform: translateX(0.25rem);
+}
+
+/* Diagonal arrow that exits top-right and re-enters bottom-left on hover */
+.swap-arrow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.swap-arrow > * {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-out;
+}
+.swap-arrow > :last-child {
+  transform: translate(-140%, 140%);
+}
+.group:hover .swap-arrow > :first-child {
+  transform: translate(140%, -140%);
+}
+.group:hover .swap-arrow > :last-child {
+  transform: translate(0, 0);
+}
+
+/* ---------- Reveal motion (port of Nova's motion.js contract) ----------
+   [data-motion]            single element
+   [data-motion-sequence]   children reveal one after another
+   "fade" reveals on load, "viewport" reveals when scrolled into view. */
+html[data-motion-ready] [data-motion],
+html[data-motion-ready] [data-motion-sequence] > * {
+  opacity: 0;
+  filter: blur(var(--motion-blur));
+  translate: 0 var(--motion-distance);
+  transition:
+    opacity var(--motion-duration) var(--motion-ease) var(--motion-delay, 0s),
+    filter var(--motion-duration) var(--motion-ease) var(--motion-delay, 0s),
+    translate var(--motion-duration) var(--motion-ease) var(--motion-delay, 0s),
+    transform 0.25s var(--ease-card) 0s,
+    box-shadow 0.25s var(--ease-card) 0s,
+    border-color 0.25s var(--ease-card) 0s,
+    background-color 0.25s var(--ease-card) 0s,
+    color 0.25s var(--ease-card) 0s;
+}
+html[data-motion-ready] [data-motion-sequence] > * {
+  --motion-delay: calc(var(--motion-order, 0) * var(--motion-stagger));
+}
+html[data-motion-ready] [data-motion-profile='soft'] > * {
+  --motion-duration: 0.95s;
+  --motion-blur: 2px;
+  --motion-distance: 0.4rem;
+}
+html[data-motion-ready] [data-motion][data-motion-visible],
+html[data-motion-ready] [data-motion-sequence] > [data-motion-visible] {
+  opacity: 1;
+  filter: none;
+  translate: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-motion-ready] [data-motion],
+  html[data-motion-ready] [data-motion-sequence] > * {
+    opacity: 1;
+    filter: none;
+    translate: 0;
+    transition: none;
+  }
+}

@@ -1,0 +1,252 @@
+.expertise {
+  padding-block: clamp(4rem, 7vw, 6.5rem);
+}
+
+/* ---------- Intro: title / lead / link ---------- */
+.expertise__intro {
+  display: grid;
+  gap: 1.5rem;
+}
+.expertise__intro > div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 32rem;
+}
+.expertise__link {
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+/* ---------- Service cards ---------- */
+.expertise__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.service-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.875rem;
+  min-height: 4.5rem;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--ui-radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--ui-elevation-soft);
+  transition:
+    transform 0.25s var(--ease-card),
+    box-shadow 0.25s var(--ease-card),
+    border-color 0.3s ease-out,
+    background-color 0.3s ease-out;
+}
+@media (hover: hover) {
+  .service-card:hover {
+    border-color: var(--color-brand-accent);
+    background-color: color-mix(in oklab, var(--color-brand-accent) 10%, var(--color-surface));
+    box-shadow: 0 1.625rem 4rem color-mix(in oklch, var(--color-brand-dark) 12%, transparent);
+    transform: translateY(-0.25rem);
+  }
+}
+.service-card__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid color-mix(in oklab, var(--color-brand-accent) 28%, transparent);
+  border-radius: var(--ui-radius-full);
+  color: var(--color-brand-accent);
+  font-size: 1.125rem;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    color 0.3s;
+}
+.service-card:hover .service-card__icon {
+  border-color: var(--color-brand-accent);
+  background: var(--color-brand-accent);
+  color: var(--color-brand-dark);
+}
+.service-card__content {
+  min-width: 0;
+}
+.service-card__title-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-width: 0;
+}
+.service-card__number {
+  flex: none;
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--ui-text-on-light-subtle);
+  transition: color 0.3s;
+}
+.service-card__title {
+  min-width: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.service-card__description {
+  display: block;
+  margin-top: 0.625rem;
+  font-size: clamp(0.8125rem, 0.35rem + 0.45vw, 0.9375rem);
+  line-height: 1.45;
+  color: var(--ui-text-on-light-subtle);
+  transition: color 0.3s;
+}
+.service-card:hover .service-card__number,
+.service-card:hover .service-card__description {
+  color: color-mix(in oklab, var(--color-brand-dark) 80%, transparent);
+}
+.service-card__arrow {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  overflow: hidden;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--ui-radius-full);
+  color: var(--color-brand-dark);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    color 0.3s;
+}
+.service-card__arrow-icon {
+  width: 1rem;
+  height: 1rem;
+}
+.service-card:hover .service-card__arrow {
+  border-color: var(--color-brand-accent);
+  background: var(--color-brand-accent);
+  color: var(--color-brand-light);
+}
+
+/* ---------- Toolkit ---------- */
+.toolkit .chip {
+  cursor: default;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+.toolkit .chip:hover {
+  background-color: var(--color-brand-accent);
+  border-color: var(--color-brand-accent);
+  color: var(--color-brand-dark);
+}
+
+.toolkit {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--color-outline-variant);
+}
+.toolkit__label {
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.3em;
+}
+.toolkit__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
+}
+.toolkit__group-title {
+  margin-bottom: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .expertise__intro {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+  .expertise__intro > div:nth-child(2) {
+    grid-area: 2 / 1 / auto / -1;
+    max-width: 42rem;
+  }
+  .expertise__link-wrap {
+    place-self: end;
+  }
+  .expertise__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .service-card {
+    min-height: 14rem;
+  }
+}
+@media (min-width: 48rem) {
+  .toolkit__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 2.5rem;
+  }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 64rem) {
+  .expertise__intro {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: end;
+    gap: clamp(1.5rem, 2vw, 2.5rem);
+  }
+  .expertise__intro > div:nth-child(2) {
+    display: block;
+    place-self: end center;
+    max-width: none;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .expertise__link-wrap {
+    place-self: end;
+  }
+  .expertise__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  }
+  .service-card {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-items: start;
+    min-height: 0;
+    padding: clamp(1rem, 1.6vw, 1.5rem);
+  }
+  .service-card__icon {
+    grid-area: 1 / 1;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.35rem;
+  }
+  .service-card__content {
+    grid-area: 2 / 1 / auto / -1;
+    align-self: start;
+  }
+  .service-card__title-line {
+    gap: 0.625rem;
+  }
+  .service-card__title {
+    display: block;
+  }
+  .service-card__arrow {
+    grid-area: 1 / 2;
+    place-self: center end;
+  }
+  .toolkit__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
