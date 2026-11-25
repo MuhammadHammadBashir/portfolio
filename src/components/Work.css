@@ -143,9 +143,15 @@
   .work__row--flip {
     grid-template-columns: 1fr 1.38fr;
   }
+  .work__row--featured {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .project-card figure {
     aspect-ratio: auto;
     height: clamp(22rem, 34vw, 32rem);
+  }
+  .work__row--featured .project-card figure {
+    height: clamp(22rem, 35vw, 33rem);
   }
 }
 

@@ -39,7 +39,7 @@ export const HERO = {
   primaryCta: { label: 'View my work', href: '#work' },
   secondaryCta: { label: 'Download CV', href: LINKS.cv },
   trustedLabel: 'Worked with',
-  trusted: ['SPORTUNITY', 'CREATIVESCORE', 'LUMS', 'DOCTOR AI'],
+  trusted: ['TALLA', 'SPORTUNITY','CREATIVESCORE', 'LUMS', 'DOCTOR AI'],
   image: { src: '/images/hammad-portrait.webp', alt: 'Portrait of Muhammad Hammad Bashir', width: 863, height: 1024 },
   stats: [
     { value: '5+', label: 'Years of experience' },
@@ -69,6 +69,16 @@ export const WORK = {
 };
 
 export const PROJECTS: Project[] = [
+  {
+    title: 'TALLA: Natural-Language AI Video Monitoring',
+    tag: 'Vision-Language AI · Live Now',
+    role: 'Senior AI Engineer',
+    image: '/images/talla-demo-poster.webp',
+    video: '/media/talla-demo.mp4',
+    body: 'Live AI video-monitoring platform for a multi-camera private campus: it watches CCTV cameras in real time, raises safety alerts, counts people and vehicles at the entrances and gives the client\'s staff a daily insights dashboard.\nNatural-language alerts: safety rules written in plain language (fire or smoke, animals on site, a person down, unsafe climbing, wet floors, entrance intrusion) are judged by a self-hosted vision-language model on a single cloud GPU, scoped to time windows, cameras and zones, with multi-frame checks.\nTwo-model verification: an independent second model checks high-risk alerts before they go out, blocking more than 100 false alarms in one week before they reached staff.\nEntrance counting and vehicle classification: in/out line counting with object detection and multi-object tracking, tuned against hand counts, plus VLM classification that separates the client\'s fleet from delivery vans and tracks which fleet routes left and returned.\nInsights dashboard with people and parking occupancy, peak-hour patterns and cleaning and patrol logs in three languages, backed by a benchmark of detection approaches on 800+ real frames per camera and time of day.\nPython backend, web front end, multi-tenant auth and email/SMS/messaging notifications on GPU cloud behind a secure tunnel, with automated backups, a health watchdog, video-loss accounting and incident runbooks.',
+    stack: ['Vision-Language Models', 'Object Detection', 'Multi-Object Tracking', 'RTSP', 'GPU Inference', 'Python'],
+    link: 'https://talla.com/',
+  },
   {
     title: 'Real-Time Multi-Camera Sports Vision System',
     tag: 'Sports AI · Production',
@@ -183,6 +193,7 @@ export const EXPERTISE = {
 
 export const SKILLS: { group: string; items: string[] }[] = [
   { group: 'Computer Vision', items: ['YOLOv8', 'OpenCV', 'MediaPipe', 'ByteTrack', 'DeepSORT', 'TrackNet', 'SAM', 'CLIP'] },
+  { group: 'Vision-Language Models', items: ['Self-hosted VLMs', 'Natural-language alerts', 'Multi-frame reasoning', 'Two-model verification'] },
   { group: 'Video Analytics', items: ['RTSP pipelines', 'Multi-camera sync', 'Event detection', 'Tracking systems'] },
   { group: 'Deep Learning', items: ['PyTorch', 'TensorFlow', 'CNNs', 'Transformers', 'GANs', 'Diffusion models'] },
   { group: 'LLMs & Multimodal AI', items: ['GPT', 'Claude', 'LLaMA', 'LangChain', 'RAG', 'CrewAI'] },
@@ -197,8 +208,8 @@ export const ABOUT = {
   eyebrow: 'About me',
   title: 'Turning research into production AI',
   lead: 'I am a Data Scientist and Machine Learning Engineer specialising in end-to-end video intelligence: object detection, tracking, pose estimation and event recognition. I also build LLM-powered applications, RAG systems and AI agent workflows, with scalable MLOps and real-time inference behind them.',
-  media: { video: '/media/sports-vision.mp4', poster: '/images/sports-vision-poster.webp', alt: 'Real-time player and ball tracking from Hammad\'s sports vision system' },
-  thumbs: ['/images/atlas.webp', '/images/creativescore.webp', '/images/drone-satellite.webp'],
+  media: { video: '/media/talla-alert.mp4', poster: '/images/talla-alert-poster.webp', alt: 'TALLA raising a natural-language alert with its evidence frame from a live camera' },
+  thumbs: ['/images/talla-demo-poster.webp', '/images/sports-vision-poster.webp', '/images/creativescore.webp'],
   countValue: '30+',
   countLabel: 'production AI projects delivered',
   points: ['Research to production, end to end', 'Real-time, low-latency inference', 'Clear communication with global teams'],
@@ -211,7 +222,21 @@ export const EXPERIENCE = {
   lead: 'Five years of building computer vision and AI systems for startups, research labs and international clients.',
   roles: [
     {
-      period: 'June 2025 – Present',
+      period: 'August 2026 – Present',
+      role: 'Senior AI Engineer (Generative AI & Vision-Language Models)',
+      company: 'Stealth AI Startup · Remote',
+      points: [
+        'Built and deployed a real-time AI video-monitoring platform using self-hosted vision-language models (VLMs) for natural-language safety monitoring, contextual video understanding and automated incident detection.',
+        'Developed natural-language alerting with prompt engineering and multi-frame reasoning to detect fire, smoke, animals, fallen individuals, unsafe climbing, wet floors and unauthorised entrance access.',
+        'Implemented a two-model verification framework in which an independent AI model validates high-risk alerts, blocking 100+ false alarms within one week before they reached client staff.',
+        'Integrated vision-language models, object detection and multi-object tracking for vehicle classification, fleet identification, entrance counting and automated video analytics.',
+        'Benchmarked multiple detection approaches across 800+ real-world frames per camera and time of day to optimise model selection and detection accuracy.',
+        'Built Python AI services with GPU-hosted inference, RTSP video streaming and multi-tenant authentication, plus data pipelines and review tools for evaluation and fine-tuning.',
+        'Deployed and maintained cloud AI infrastructure with automated backups, health monitoring, video-loss tracking and production incident management.',
+      ],
+    },
+    {
+      period: 'June 2025 – July 2026',
       role: 'Computer Vision Engineer (Sports AI)',
       company: 'Sportunity · Sports Analytics Platform',
       points: [

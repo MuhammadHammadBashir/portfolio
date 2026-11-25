@@ -44,9 +44,11 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export function Work() {
-  // Pair projects into rows; odd rows flip the wide/narrow columns for rhythm.
-  const rows: Project[][] = [];
-  for (let i = 0; i < PROJECTS.length; i += 2) rows.push(PROJECTS.slice(i, i + 2));
+  // The first (current) project gets a full-width featured row; the rest pair up,
+  // alternating which column is wide for rhythm.
+  const [featured, ...rest] = PROJECTS;
+  const rows: Project[][] = [[featured]];
+  for (let i = 0; i < rest.length; i += 2) rows.push(rest.slice(i, i + 2));
 
   return (
     <section id="work" className="section work">
@@ -67,7 +69,7 @@ export function Work() {
         </div>
         <div className="work__rows">
           {rows.map((row, i) => (
-            <div key={i} className={`work__row${i % 2 ? ' work__row--flip' : ''}`} data-motion-sequence="viewport" data-motion-profile="soft">
+            <div key={i} className={`work__row${i === 0 ? ' work__row--featured' : i % 2 ? '' : ' work__row--flip'}`} data-motion-sequence="viewport" data-motion-profile="soft">
               {row.map((project) => (
                 <ProjectCard key={project.title} project={project} />
               ))}

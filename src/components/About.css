@@ -129,9 +129,13 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3rem;
   }
-  .about__media,
+  .about__media {
+    height: clamp(22rem, 30vw, 27rem);
+    min-height: 0;
+  }
   .about__media video {
-    min-height: 32rem;
+    min-height: 0;
+    object-position: top;
   }
   .about__copy {
     padding: 2rem;
